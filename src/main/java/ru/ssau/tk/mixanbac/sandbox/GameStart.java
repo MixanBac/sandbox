@@ -9,6 +9,7 @@ public class GameStart {
         JFrame startFrame = new JFrame("BubbleShooter");
         startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//Установим константы по определению при нажатии крестика, для закрытия приложения
 
+        startFrame.setContentPane(new GamePanel());
     }
 
 }
