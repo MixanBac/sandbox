@@ -1,4 +1,4 @@
-package ru.ssau.tk.mixanbac.sandbox;
+package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 
 import javax.swing.JPanel;
 import java.awt.*;
