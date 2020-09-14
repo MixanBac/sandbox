@@ -24,6 +24,10 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     //Functions
     public void run() {
         while(true){ //TODO States
+
+            gameUpdate();//С каждым проходом обновление
+            gameRender();
+
             try {
                 thread.sleep(33);//TODO FPS
             } catch (InterruptedException e) {
