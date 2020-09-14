@@ -25,4 +25,19 @@ public class Person {
     }
 }
 
+class Task1 {
+    public static void main(String[] args) {
+        Person elena = new Person();
+        Person vlada = new Person();
+
+        elena.setFirstName("Elena");
+        elena.setLastName("Ivanova");
+        elena.setPassportId(758304);
+
+        vlada.setFirstName("Vlada");
+        vlada.setLastName("Petrova");
+        vlada.setPassportId(953023);
+    }
+
+}
 
