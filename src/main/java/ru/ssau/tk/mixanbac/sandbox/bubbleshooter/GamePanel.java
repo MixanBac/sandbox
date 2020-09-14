@@ -20,4 +20,16 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         requestFocus();//Позволяет установить фокус на нужном компоненте
         thread.start();//Запускаем поток
     }
+
+    //Functions
+    public void run() {
+        while(true){ //TODO States
+            try {
+                thread.sleep(33);//TODO FPS
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
