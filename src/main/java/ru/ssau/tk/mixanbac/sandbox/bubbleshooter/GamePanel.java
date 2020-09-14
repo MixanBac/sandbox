@@ -31,5 +31,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             }
         }
     }
+    public void gameUpdate(){//Обновление данных и списков данных
 
+    }
+
+    public void gameRender(){//Обновление графических компонентов игры
+
+    }
 }
