@@ -24,8 +24,6 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         setPreferredSize(new Dimension(WIDTH, HEIGHT));//Размер окна с заданными параметрами
         setFocusable(true);//Сделать окно активным
         requestFocus();//Позволяет установить фокус на нужном компоненте
-        thread = new Thread(this);
-        thread.start();//Запускаем поток
     }
 
     //Functions
@@ -40,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
             gameUpdate();//С каждым проходом обновление
             gameRender();
+            gameDraw();
 
             try {
                 thread.sleep(33);//TODO FPS
@@ -49,10 +48,19 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         }
     }
     public void gameUpdate(){//Обновление данных и списков данных
-
+        //Background update
+        background.update();
     }
 
     public void gameRender(){//Обновление графических компонентов игры
-
+        //Background draw
+        background.draw(g);//Передача кисточки в GamePanel
     }
+
+    private void gameDraw() {//Передача изображения в панель
+        Graphics g2 = this.getGraphics();
+        g2.drawImage(image, 0, 0, null);
+        g2.dispose();//Очищение мусора,удаление g2, так как картинку уже нарисовали
+    }
+
 }
