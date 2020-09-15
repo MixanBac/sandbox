@@ -27,6 +27,12 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     }
 
     //Functions
+
+    public void start(){//Метод для запуска потока
+        thread = new Thread(this);
+        thread.start();//Запускаем поток
+    }
+
     public void run() {
 
         image= new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);//Инициализация значений
