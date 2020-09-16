@@ -15,7 +15,8 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     private BufferedImage image;//Создает переменную холста
     private Graphics2D g;//Создает кисточку
 
-    private GameBack background;
+    public static GameBack background;//Для взаимодействия с другими классами
+    public static Player player;
 
     // Constructor
     public GamePanel(){
@@ -39,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         g =(Graphics2D) image.getGraphics();//Привязка кисточки к холсту
 
         background = new GameBack();
+        player = new Player();//Инициализация
 
         while(true){ //TODO States
 
@@ -56,11 +58,17 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public void gameUpdate(){//Обновление данных и списков данных
         //Background update
         background.update();
+
+        //Player update
+        player.update();//Обновление данных об игроке
     }
 
     public void gameRender(){//Обновление графических компонентов игры
         //Background draw
         background.draw(g);//Передача кисточки в GamePanel
+
+        //Player draw
+        player.draw(g);//Рисование игрока
     }
 
     private void gameDraw() {//Передача изображения в панель
