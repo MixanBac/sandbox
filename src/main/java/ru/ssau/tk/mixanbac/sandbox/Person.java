@@ -23,21 +23,40 @@ public class Person {
     public int getPassportId() {
         return passportId;
     }
-}
 
-class Task1 {
-    public static void main(String[] args) {
-        Person elena = new Person();
-        Person vlada = new Person();
+    Person(){
+        firstName = "Mixan";
+        lastName = "Bac";
+        passportId = 734849;
+    }
 
-        elena.setFirstName("Elena");
-        elena.setLastName("Ivanova");
-        elena.setPassportId(758304);
+    Person(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-        vlada.setFirstName("Vlada");
-        vlada.setLastName("Petrova");
-        vlada.setPassportId(953023);
+    Person(int passportId){
+        this.passportId = passportId;
+    }
+
+    Person(String firstName, String lastName, int passportId){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.passportId = passportId;
+    }
+
+    public static void main(String[] args){
+        Person firstPerson = new Person();
+        Person secondPerson = new Person("Elena", "Ivanova");
+        Person thirdPerson = new Person("Vlada", "Petrova", 953023);
+        Person fourthPerson = new Person(758304);
+
+        System.out.println(firstPerson.getPassportId());
+        System.out.println(secondPerson.getFirstName());
+        System.out.println(thirdPerson.getPassportId());
+        System.out.println(fourthPerson.getLastName());
     }
 
 }
+
 
