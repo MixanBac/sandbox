@@ -38,7 +38,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
         image= new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);//Инициализация значений
         g =(Graphics2D) image.getGraphics();//Привязка кисточки к холсту
-
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);//Сглаживание
         background = new GameBack();
         player = new Player();//Инициализация
 
