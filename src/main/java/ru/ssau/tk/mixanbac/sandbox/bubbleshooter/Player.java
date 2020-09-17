@@ -9,8 +9,15 @@ public class Player {
     private double y;
     private int r;
 
+    private int speed;
+
     private  Color color1;
     private  Color color2;
+
+    public static boolean up;//Управление
+    public static boolean down;
+    public static boolean left;
+    public static boolean right;
 
     //Constructor
     public Player(){//Инициализация игрока
@@ -19,12 +26,31 @@ public class Player {
 
         r = 5;
 
+        speed = 5;
+
         color1 = Color.WHITE;
+
+        up = false;//Кнопки по дефолту не нажаты
+        down = false;
+        left = false;
+        right = false;
 
     }
 
     //Functions
     public void update(){//Обновление данных об игроке
+        if(up && y > r){
+            y -= speed;
+        }
+        if(down && y < GamePanel.HEIGHT - r){
+            y += speed;
+        }
+        if(left && x > r){
+            x -= speed;
+        }
+        if(right && x < GamePanel.WIDTH - r){
+            x += speed;
+        }
 
     }
 
