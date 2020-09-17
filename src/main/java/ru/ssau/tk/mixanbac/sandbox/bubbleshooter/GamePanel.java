@@ -25,6 +25,9 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         setPreferredSize(new Dimension(WIDTH, HEIGHT));//Размер окна с заданными параметрами
         setFocusable(true);//Сделать окно активным
         requestFocus();//Позволяет установить фокус на нужном компоненте
+
+        addKeyListener(new Listeners());//Привязка к панели слушателя
+
     }
 
     //Functions
