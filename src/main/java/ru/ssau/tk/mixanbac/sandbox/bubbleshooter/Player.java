@@ -9,6 +9,9 @@ public class Player {
     private double y;
     private int r;
 
+    private double dx;//Коэффициэнты смещения
+    private double dy;
+
     private int speed;
 
     private  Color color1;
@@ -28,6 +31,9 @@ public class Player {
 
         speed = 5;
 
+        dx = 0;//Приращение
+        dy = 0;
+
         color1 = Color.WHITE;
 
         up = false;//Кнопки по дефолту не нажаты
@@ -40,17 +46,27 @@ public class Player {
     //Functions
     public void update(){//Обновление данных об игроке
         if(up && y > r){
-            y -= speed;
+            dy = -speed;
         }
         if(down && y < GamePanel.HEIGHT - r){
-            y += speed;
+            dy = speed;
         }
         if(left && x > r){
-            x -= speed;
+            dx = -speed;
         }
         if(right && x < GamePanel.WIDTH - r){
-            x += speed;
+            dx = speed;
         }
+        if(up && left || up && right || down && left || down && right){//Чтобы не перемещался быстрее по диагонали
+            dy = dy * Math.sin(45);
+            dx = dx * Math.cos(45);
+        }
+
+        y += dy;
+        x += dx;
+
+        dy = 0;//Для остановки, если клавиши не нажаты
+        dx = 0;
 
     }
 
