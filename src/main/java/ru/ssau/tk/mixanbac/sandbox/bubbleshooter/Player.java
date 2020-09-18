@@ -48,6 +48,14 @@ public class Player {
     }
 
     //Functions
+
+    public double getX(){//Считывание x
+        return  x;
+    }
+
+    public double getY(){//Считывание y
+        return  y;
+    }
     public void update(){//Обновление данных об игроке
         if(up && y > r){
             dy = -speed;
