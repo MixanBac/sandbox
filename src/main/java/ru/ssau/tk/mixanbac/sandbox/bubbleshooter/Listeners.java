@@ -23,6 +23,10 @@ public class Listeners implements KeyListener {//Для управления к�
         if(key == KeyEvent.VK_D){//Сравниваем с нажатием на кнопку D
             Player.right = true;
         }
+
+        if(key == KeyEvent.VK_SPACE){//Стрельба игрока на кнопку SPACE
+            Player.isFiring = true;
+        }
     }
 
     public  void  keyReleased(KeyEvent e){//Вызывается при отпускании любой клавиши на клавиатуре
@@ -42,6 +46,9 @@ public class Listeners implements KeyListener {//Для управления к�
 
         if(key == KeyEvent.VK_D){//Сравниваем с нажатием на кнопку D
             Player.right = false;
+        }
+        if(key == KeyEvent.VK_SPACE){//Прекращение огня если кнопка SPACE не нажата
+            Player.isFiring = false;
         }
     }
 
