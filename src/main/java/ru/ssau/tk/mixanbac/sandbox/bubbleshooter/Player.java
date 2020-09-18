@@ -22,6 +22,8 @@ public class Player {
     public static boolean left;
     public static boolean right;
 
+    public static boolean isFiring;//Стрельба
+
     //Constructor
     public Player(){//Инициализация игрока
         x = GamePanel.WIDTH/2;//Начальная позиция игрока
@@ -40,6 +42,8 @@ public class Player {
         down = false;
         left = false;
         right = false;
+
+        isFiring = false;
 
     }
 
@@ -67,6 +71,10 @@ public class Player {
 
         dy = 0;//Для остановки, если клавиши не нажаты
         dx = 0;
+
+        if(isFiring){//Добавление пули при стрельбе
+            GamePanel.bullets.add(new Bullet());
+        }
 
     }
 
