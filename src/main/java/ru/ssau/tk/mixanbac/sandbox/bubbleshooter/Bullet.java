@@ -29,9 +29,9 @@ public class Bullet {
         y -= speed;
     }
 
-    public void draw(Graphics2D g){
+    public void draw(Graphics2D g){//Рисование пули
         g.setColor(color);
-        g.fillOval((int)x, (int)y, r, 2 * r);//Рисование пули
+        g.fillOval((int)x, (int)y, r, 2 * r);
     }
 
 }

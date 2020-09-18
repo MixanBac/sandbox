@@ -3,6 +3,7 @@ package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 import javax.swing.JPanel;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class GamePanel extends JPanel implements Runnable {//Используем интерфэйс для создания потока
 
@@ -17,6 +18,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
     public static GameBack background;//Для взаимодействия с другими классами
     public static Player player;
+    public static ArrayList<Bullet> bullets;//Создание списка пуль
 
     // Constructor
     public GamePanel(){
@@ -44,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);//Сглаживание
         background = new GameBack();
         player = new Player();//Инициализация
+        bullets = new ArrayList<Bullet>();
 
         while(true){ //TODO States
 
@@ -64,6 +67,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
         //Player update
         player.update();//Обновление данных об игроке
+
+        //Bullets update
+        for(int i = 0 ; i <bullets.size(); i++){//Перебор и обновление всего списка пуль
+            bullets.get(i).update();
+        }
     }
 
     public void gameRender(){//Обновление графических компонентов игры
@@ -72,6 +80,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
         //Player draw
         player.draw(g);//Рисование игрока
+
+        //Bullets draw
+        for(int i = 0; i < bullets.size(); i++){//Рисование всего списка пуль
+            bullets.get(i).draw(g);
+        }
     }
 
     private void gameDraw() {//Передача изображения в панель
