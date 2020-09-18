@@ -15,8 +15,8 @@ public class Bullet {
 
     //Constructor
     public Bullet(){
-        x = 0;
-        y = 0;
+        x = GamePanel.player.getX();//Задание X в конструкторе для мгновенного считывания и рисования пуль
+        y = GamePanel.player.getY();
         r = 2;//Радиус пули
 
         speed = 10;
@@ -29,7 +29,7 @@ public class Bullet {
         y -= speed;
     }
 
-    public void draw(Graphics2D g){//Рисование пули
+    public void draw(Graphics2D g){//Рисование пули в месте где находится игрок
         g.setColor(color);
         g.fillOval((int)x, (int)y, r, 2 * r);
     }
