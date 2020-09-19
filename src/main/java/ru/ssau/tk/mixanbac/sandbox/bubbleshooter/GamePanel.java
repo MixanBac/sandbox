@@ -71,6 +71,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         //Bullets update
         for(int i = 0 ; i <bullets.size(); i++){//Перебор и обновление всего списка пуль
             bullets.get(i).update();
+            boolean remove = bullets.get(i).remove();//Реализация очиски пули
+            if(remove){
+                bullets.remove(i);
+                i--;//Сокращение индекса если объект удален
+            }
         }
     }
 
