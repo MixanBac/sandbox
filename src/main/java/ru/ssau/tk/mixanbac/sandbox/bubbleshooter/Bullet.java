@@ -25,6 +25,14 @@ public class Bullet {
     }
 
     //Functions
+
+    public boolean remove() {//Очистка пули из списка, если она улетела за экран
+        if(y<0||x>GamePanel.WIDTH||x<0) {
+            return true;
+        }
+        return false;
+    }
+
     public  void  update(){
         y -= speed;
     }
