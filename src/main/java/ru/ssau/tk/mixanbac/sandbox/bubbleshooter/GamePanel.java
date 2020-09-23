@@ -84,6 +84,12 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                 i--;//Сокращение индекса если объект удален
             }
         }
+
+        //Enemies update
+        for(int i = 0; i < enemies.size(); i++){
+            enemies.get(i).update();
+        }
+
     }
 
     public void gameRender(){//Обновление графических компонентов игры
@@ -96,6 +102,10 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         //Bullets draw
         for(int i = 0; i < bullets.size(); i++){//Рисование всего списка пуль
             bullets.get(i).draw(g);
+        }
+        //Enemies draw
+        for (int i = 0; i < enemies.size(); i++){
+            enemies.get(i).draw(g);
         }
     }
 
