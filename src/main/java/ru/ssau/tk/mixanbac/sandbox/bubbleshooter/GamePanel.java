@@ -20,6 +20,8 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public static Player player;
     public static ArrayList<Bullet> bullets;//Создание списка пуль
 
+    public  static ArrayList<Enemy> enemies;//Создание списка врагов
+
     // Constructor
     public GamePanel(){
         super();//Вызываем конструктор JPanel
@@ -44,9 +46,14 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         image= new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);//Инициализация значений
         g =(Graphics2D) image.getGraphics();//Привязка кисточки к холсту
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);//Сглаживание
+
         background = new GameBack();
         player = new Player();//Инициализация
         bullets = new ArrayList<Bullet>();
+        enemies = new ArrayList<Enemy>();
+
+        enemies.add(new Enemy(1, 1));
+        enemies.add(new Enemy(1, 1));
 
         while(true){ //TODO States
 
