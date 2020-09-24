@@ -46,6 +46,14 @@ public class Enemy {
 
     //Functions
 
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
     public boolean remove(){//Уничтожение врага
         if(health <= 0){
             return true;
