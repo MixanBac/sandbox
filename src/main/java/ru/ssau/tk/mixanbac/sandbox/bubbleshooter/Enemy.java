@@ -34,7 +34,8 @@ public class Enemy {
 
                 r = 7;
 
-                speed = 2;
+                speed = 10;
+                health = 2;
 
                 double angle = Math.toRadians(Math.random() * 360);//Враги могут двигаться в любую сторону
                 dx = Math.sin(angle) * speed;
@@ -44,6 +45,18 @@ public class Enemy {
     }
 
     //Functions
+
+    public boolean remove(){//Уничтожение врага
+        if(health <= 0){
+            return true;
+        }
+        return false;
+    }
+
+    public void hit(){//При попадении во врага-потеря жизни
+        health--;
+    }
+
     public void update(){
         x += dx;
         y += dy;
@@ -60,6 +73,6 @@ public class Enemy {
         g.setStroke(new BasicStroke(3));//Обводка
         g.setColor(color.darker());//Цвет потемнее
         g.drawOval((int)(x - r), (int)(y - r), 2 * r, 2 * r);
-        g.setStroke(new BasicStroke(3));
+        g.setStroke(new BasicStroke(1));
     }
 }
