@@ -26,6 +26,14 @@ public class Bullet {
 
     //Functions
 
+    public double getX(){
+        return x;
+    }
+
+    public double getY(){
+        return y;
+    }
+
     public boolean remove() {//Очистка пули из списка, если она улетела за экран
         if(y<0||x>GamePanel.WIDTH||x<0) {
             return true;
