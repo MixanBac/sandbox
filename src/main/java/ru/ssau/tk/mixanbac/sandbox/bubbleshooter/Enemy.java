@@ -34,7 +34,7 @@ public class Enemy {
 
                 r = 7;
 
-                speed = 10;
+                speed = 2;
                 health = 2;
 
                 double angle = Math.toRadians(Math.random() * 360);//Враги могут двигаться в любую сторону
@@ -46,12 +46,16 @@ public class Enemy {
 
     //Functions
 
-    public double getX(){
+    public double getX(){//Считывание x врага
         return x;
     }
 
-    public double getY(){
+    public double getY(){//Считывание y врага
         return y;
+    }
+
+    public int getR(){//Считывание r врага
+        return r;
     }
 
     public boolean remove(){//Уничтожение врага
