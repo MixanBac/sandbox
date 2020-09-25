@@ -35,7 +35,6 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     }
 
     //Functions
-
     public void start(){//Метод для запуска потока
         thread = new Thread(this);
         thread.start();//Запускаем поток
@@ -88,6 +87,32 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         //Enemies update
         for(int i = 0; i < enemies.size(); i++){
             enemies.get(i).update();
+        }
+
+        //Bullets-enemies collide
+        for(int i = 0; i < enemies.size(); i++){//Сравнение положения пули и врага
+            Enemy e = enemies.get(i);//Индекс врага
+            double ex = e.getX();//Координата x врага
+            double ey = e.getY();//Координата y врага
+            for (int j = 0; j < bullets.size(); j++){
+                Bullet b = bullets.get(j);
+                double bx = b.getX();//Считывание координаты пули
+                double by = b.getY();//Считывание координаты пули
+                double dx = ex - bx;//Разница
+                double dy = ey - by;//Разница
+                double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и пулей
+                if((int) dist < e.getR() + b.getR()){
+                    e.hit();
+                    bullets.remove(j);//Удаление пули при попадении
+                    break;
+                }
+
+            }
+            boolean remove = e.remove();
+            if(remove){
+                enemies.remove(i);//Удаление врага
+                i--;//Стереть врага из массива
+            }
         }
 
     }
