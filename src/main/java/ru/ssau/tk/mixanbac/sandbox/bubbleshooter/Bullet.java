@@ -26,12 +26,16 @@ public class Bullet {
 
     //Functions
 
-    public double getX(){
+    public double getX(){//Считывание x пули
         return x;
     }
 
-    public double getY(){
+    public double getY(){//Считывание y пули
         return y;
+    }
+
+    public int getR(){//Считывание r пули
+        return r;
     }
 
     public boolean remove() {//Очистка пули из списка, если она улетела за экран
