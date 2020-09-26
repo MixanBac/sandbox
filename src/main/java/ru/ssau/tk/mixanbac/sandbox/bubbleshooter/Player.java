@@ -14,6 +14,8 @@ public class Player {
 
     private int speed;
 
+    private double health;
+
     private  Color color1;
     private  Color color2;
 
@@ -35,6 +37,8 @@ public class Player {
 
         dx = 0;//Приращение
         dy = 0;
+
+        health = 3;
 
         color1 = Color.WHITE;
 
@@ -60,6 +64,11 @@ public class Player {
     public int getR(){//Считывание r
         return  r;
     }
+
+    public void hit(){//Падение здоровья при столкновении
+        health--;
+    }
+
     public void update(){//Обновление данных об игроке
         if(up && y > r){
             dy = -speed;
