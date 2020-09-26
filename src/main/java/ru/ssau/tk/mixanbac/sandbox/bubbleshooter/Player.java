@@ -56,6 +56,10 @@ public class Player {
     public double getY(){//Считывание y
         return  y;
     }
+
+    public int getR(){//Считывание r
+        return  r;
+    }
     public void update(){//Обновление данных об игроке
         if(up && y > r){
             dy = -speed;
