@@ -104,15 +104,18 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                 if((int) dist < e.getR() + b.getR()){
                     e.hit();
                     bullets.remove(j);//Удаление пули при попадении
-                    break;
+                    j--;//Удаление индекса пули из массива
+                    boolean remove = e.remove();
+                    if(remove){
+                        enemies.remove(i);//Удаление врага
+                        i--;//Стереть врага из массива
+                        break;
+                    }
+
                 }
 
             }
-            boolean remove = e.remove();
-            if(remove){
-                enemies.remove(i);//Удаление врага
-                i--;//Стереть врага из массива
-            }
+
         }
 
     }
