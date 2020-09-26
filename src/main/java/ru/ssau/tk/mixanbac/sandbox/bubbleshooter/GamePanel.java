@@ -101,7 +101,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                 double dx = ex - bx;//Разница
                 double dy = ey - by;//Разница
                 double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и пулей
-                if((int) dist < e.getR() + b.getR()){
+                if((int) dist <= e.getR() + b.getR()){
                     e.hit();
                     bullets.remove(j);//Удаление пули при попадении
                     j--;//Удаление индекса пули из массива
@@ -112,6 +112,30 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                         break;
                     }
 
+                }
+
+            }
+
+        }
+
+        //Player-enemy collides
+        for(int i = 0; i < enemies.size(); i++){
+            Enemy e = enemies.get(i);//Индекс врага
+            double ex = e.getX();//Координата x врага
+            double ey = e.getY();//Координата y врага
+
+            double px = player.getX();//Координата x игрока
+            double py = player.getY();//Координата y игрока
+            double dx = ex - px;//Разница
+            double dy = ey - py;//Разница
+            double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и игроком
+            if((int) dist <= e.getR() + player.getR()){
+                e.hit();
+                player.hit();
+                boolean remove = e.remove();
+                if(remove){
+                    enemies.remove(i);//Удаление врага
+                    i--;//Стереть врага из массива
                 }
 
             }
