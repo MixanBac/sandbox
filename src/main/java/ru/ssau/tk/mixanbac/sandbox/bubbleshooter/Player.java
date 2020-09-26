@@ -67,6 +67,7 @@ public class Player {
 
     public void hit(){//Падение здоровья при столкновении
         health--;
+        System.out.println(health);
     }
 
     public void update(){//Обновление данных об игроке
