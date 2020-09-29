@@ -34,10 +34,9 @@ public class Wave {
                 enemyCount -= type * rank;//Конец цикла создания врагов
             }
         }
-        waveNumber++;
+        waveNumber++;//Изменение номера волны
     }
 
-    //
     public void update() {
         //Обновление таймера
         if (GamePanel.enemies.size() == 0 && waveTimer == 0) {//Если нет врагов и таймер=0
