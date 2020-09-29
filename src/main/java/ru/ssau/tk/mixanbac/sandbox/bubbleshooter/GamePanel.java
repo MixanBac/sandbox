@@ -163,8 +163,8 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         }
 
         //Wave draw
-        if (wave.showWave()) {
-            wave.draw(g);
+        if (wave.showWave()){
+            wave.draw(g);//Вызов метода перерисовки для волны
         }
     }
 
