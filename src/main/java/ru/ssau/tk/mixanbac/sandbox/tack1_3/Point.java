@@ -1,4 +1,5 @@
 package ru.ssau.tk.mixanbac.sandbox.tack1_3;
+
 public final class Point {
     private double x = 0, y = 0, z = 0, r = 0;
 
@@ -29,8 +30,8 @@ public final class Point {
                 '}';
     }
 
-    public double length(){
-        return r = Math.sqrt(x*x+y*y+z*z);
+    public double length() {
+        return r = Math.sqrt(x * x + y * y + z * z);
     }
 
 }
