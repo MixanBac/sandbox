@@ -26,7 +26,7 @@ public class Wave {
     //Создание врагов
     public void createEnemies() {
         int enemyCount = waveNumber * waveMultiplier;//Количество врагов
-        if (waveNumber < 10) {
+        if (waveNumber < 100) {
             while (enemyCount > 0) {//Пока
                 int type = 1;//
                 int rank = 1;//
