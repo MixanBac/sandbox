@@ -1,4 +1,4 @@
-package tack1_3;
+package ru.ssau.tk.mixanbac.sandbox.tack1_3;
 public final class Point {
     private double x = 0, y = 0, z = 0;
 
