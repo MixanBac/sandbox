@@ -19,11 +19,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public static GameBack background;//Для взаимодействия с другими классами
     public static Player player;
     public static ArrayList<Bullet> bullets;//Создание списка пуль
-    public  static ArrayList<Enemy> enemies;//Создание списка врагов
+    public static ArrayList<Enemy> enemies;//Создание списка врагов
     public static Wave wave;//Создание экземпляра класса Wave
 
     // Constructor
-    public GamePanel(){
+    public GamePanel() {
         super();//Вызываем конструктор JPanel
 
         setPreferredSize(new Dimension(WIDTH, HEIGHT));//Размер окна с заданными параметрами
@@ -35,15 +35,15 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     }
 
     //Functions
-    public void start(){//Метод для запуска потока
+    public void start() {//Метод для запуска потока
         thread = new Thread(this);
         thread.start();//Запускаем поток
     }
 
     public void run() {
 
-        image= new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);//Инициализация значений
-        g =(Graphics2D) image.getGraphics();//Привязка кисточки к холсту
+        image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);//Инициализация значений
+        g = (Graphics2D) image.getGraphics();//Привязка кисточки к холсту
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);//Сглаживание
 
         background = new GameBack();
@@ -52,7 +52,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         enemies = new ArrayList<Enemy>();
         wave = new Wave();//Инициализация
 
-        while(true){ //TODO States
+        while (true) { //TODO States
 
             gameUpdate();//С каждым проходом обновление
             gameRender();
@@ -65,7 +65,8 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             }
         }
     }
-    public void gameUpdate(){//Обновление данных и списков данных
+
+    public void gameUpdate() {//Обновление данных и списков данных
         //Background update
         background.update();
 
@@ -73,38 +74,38 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         player.update();//Обновление данных об игроке
 
         //Bullets update
-        for(int i = 0 ; i <bullets.size(); i++){//Перебор и обновление всего списка пуль
+        for (int i = 0; i < bullets.size(); i++) {//Перебор и обновление всего списка пуль
             bullets.get(i).update();
             boolean remove = bullets.get(i).remove();//Реализация очиски пули
-            if(remove){
+            if (remove) {
                 bullets.remove(i);
                 i--;//Сокращение индекса если объект удален
             }
         }
 
         //Enemies update
-        for(int i = 0; i < enemies.size(); i++){
+        for (int i = 0; i < enemies.size(); i++) {
             enemies.get(i).update();
         }
 
         //Bullets-enemies collide
-        for(int i = 0; i < enemies.size(); i++){//Сравнение положения пули и врага
+        for (int i = 0; i < enemies.size(); i++) {//Сравнение положения пули и врага
             Enemy e = enemies.get(i);//Индекс врага
             double ex = e.getX();//Координата x врага
             double ey = e.getY();//Координата y врага
-            for (int j = 0; j < bullets.size(); j++){
+            for (int j = 0; j < bullets.size(); j++) {
                 Bullet b = bullets.get(j);
                 double bx = b.getX();//Считывание координаты пули
                 double by = b.getY();//Считывание координаты пули
                 double dx = ex - bx;//Разница
                 double dy = ey - by;//Разница
                 double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и пулей
-                if((int) dist <= e.getR() + b.getR()){
+                if ((int) dist <= e.getR() + b.getR()) {
                     e.hit();
                     bullets.remove(j);//Удаление пули при попадении
                     j--;//Удаление индекса пули из массива
                     boolean remove = e.remove();
-                    if(remove){
+                    if (remove) {
                         enemies.remove(i);//Удаление врага
                         i--;//Стереть врага из массива
                         break;
@@ -117,7 +118,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         }
 
         //Player-enemy collides
-        for(int i = 0; i < enemies.size(); i++){
+        for (int i = 0; i < enemies.size(); i++) {
             Enemy e = enemies.get(i);//Индекс врага
             double ex = e.getX();//Координата x врага
             double ey = e.getY();//Координата y врага
@@ -127,11 +128,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             double dx = ex - px;//Разница
             double dy = ey - py;//Разница
             double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и игроком
-            if((int) dist <= e.getR() + player.getR()){
+            if ((int) dist <= e.getR() + player.getR()) {
                 e.hit();
                 player.hit();
                 boolean remove = e.remove();
-                if(remove){
+                if (remove) {
                     enemies.remove(i);//Удаление врага
                     i--;//Стереть врага из массива
                 }
@@ -141,13 +142,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         }
 
         //Wave update
-        wave.update(){
-
-        }
+        wave.update();
 
     }
 
-    public void gameRender(){//Обновление графических компонентов игры
+    public void gameRender() {//Обновление графических компонентов игры
         //Background draw
         background.draw(g);//Передача кисточки в GamePanel
 
@@ -155,19 +154,18 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         player.draw(g);//Рисование игрока
 
         //Bullets draw
-        for(int i = 0; i < bullets.size(); i++){//Рисование всего списка пуль
+        for (int i = 0; i < bullets.size(); i++) {//Рисование всего списка пуль
             bullets.get(i).draw(g);
         }
         //Enemies draw
-        for (int i = 0; i < enemies.size(); i++){
+        for (int i = 0; i < enemies.size(); i++) {
             enemies.get(i).draw(g);
         }
 
         //Wave draw
-        wave.draw(){
-
+        if (wave.showWave()) {
+            wave.draw(g);
         }
-
     }
 
     private void gameDraw() {//Передача изображения в панель
