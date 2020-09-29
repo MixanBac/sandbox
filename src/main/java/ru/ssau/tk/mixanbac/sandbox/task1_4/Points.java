@@ -22,4 +22,7 @@ public class Points {
     public static Point divide(Point obj1, Point obj2) {
         return new Point(obj1.getX()/obj2.getX(),obj1.getY()/obj2.getY(),obj1.getZ()/obj2.getZ());
     }
+    public static Point enlarge(Point obj,double a){
+        return new Point(obj.getX()*a,obj.getY()*a,obj.getZ()*a);
+    }
 }
