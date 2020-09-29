@@ -16,8 +16,8 @@ public class Player {
 
     private double health;
 
-    private  Color color1;
-    private  Color color2;
+    private Color color1;
+    private Color color2;
 
     public static boolean up;//Управление
     public static boolean down;
@@ -27,9 +27,9 @@ public class Player {
     public static boolean isFiring;//Стрельба
 
     //Constructor
-    public Player(){//Инициализация игрока
-        x = GamePanel.WIDTH/2;//Начальная позиция игрока
-        y = GamePanel.HEIGHT/2;
+    public Player() {//Инициализация игрока
+        x = GamePanel.WIDTH / 2;//Начальная позиция игрока
+        y = GamePanel.HEIGHT / 2;
 
         r = 5;
 
@@ -53,37 +53,37 @@ public class Player {
 
     //Functions
 
-    public double getX(){//Считывание x
-        return  x;
+    public double getX() {//Считывание x
+        return x;
     }
 
-    public double getY(){//Считывание y
-        return  y;
+    public double getY() {//Считывание y
+        return y;
     }
 
-    public int getR(){//Считывание r
-        return  r;
+    public int getR() {//Считывание r
+        return r;
     }
 
-    public void hit(){//Падение здоровья при столкновении
+    public void hit() {//Падение здоровья при столкновении
         health--;
         System.out.println(health);
     }
 
-    public void update(){//Обновление данных об игроке
-        if(up && y > r){
+    public void update() {//Обновление данных об игроке
+        if (up && y > r) {
             dy = -speed;
         }
-        if(down && y < GamePanel.HEIGHT - r){
+        if (down && y < GamePanel.HEIGHT - r) {
             dy = speed;
         }
-        if(left && x > r){
+        if (left && x > r) {
             dx = -speed;
         }
-        if(right && x < GamePanel.WIDTH - r){
+        if (right && x < GamePanel.WIDTH - r) {
             dx = speed;
         }
-        if(up && left || up && right || down && left || down && right){//Чтобы не перемещался быстрее по диагонали
+        if (up && left || up && right || down && left || down && right) {//Чтобы не перемещался быстрее по диагонали
             double angle = Math.toRadians(45);//Перевод градусов в радианы
             dy = dy * Math.sin(angle);
             dx = dx * Math.cos(angle);
@@ -95,18 +95,18 @@ public class Player {
         dy = 0;//Для остановки, если клавиши не нажаты
         dx = 0;
 
-        if(isFiring){//Добавление пули при стрельбе
+        if (isFiring) {//Добавление пули при стрельбе
             GamePanel.bullets.add(new Bullet());
         }
 
     }
 
-    public void draw(Graphics2D g){//Для рисования
+    public void draw(Graphics2D g) {//Для рисования
         g.setColor(color1);//Рисование 1 цветом
-        g.fillOval((int) (x - r),(int) (y - r), 2 * r, 2 * r);//Смещение потому, что java рисует от верхнего левого угла
+        g.fillOval((int) (x - r), (int) (y - r), 2 * r, 2 * r);//Смещение потому, что java рисует от верхнего левого угла
         g.setStroke(new BasicStroke(3));//Увеличение толщины линии
         g.setColor(color1.darker());//Цвет потемнее
-        g.drawOval((int) (x - r),(int) (y - r), 2 * r, 2 * r);
+        g.drawOval((int) (x - r), (int) (y - r), 2 * r, 2 * r);
         g.setStroke(new BasicStroke(1));
     }
 }

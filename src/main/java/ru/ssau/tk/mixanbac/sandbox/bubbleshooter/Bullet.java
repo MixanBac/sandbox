@@ -6,15 +6,15 @@ public class Bullet {
 
     //Fields
     private double x;
-    private  double y;
+    private double y;
     private int r;
 
     private int speed;
 
-    private  Color color;
+    private Color color;
 
     //Constructor
-    public Bullet(){
+    public Bullet() {
         x = GamePanel.player.getX();//Задание X в конструкторе для мгновенного считывания и рисования пуль
         y = GamePanel.player.getY();
         r = 2;//Радиус пули
@@ -26,32 +26,32 @@ public class Bullet {
 
     //Functions
 
-    public double getX(){//Считывание x пули
+    public double getX() {//Считывание x пули
         return x;
     }
 
-    public double getY(){//Считывание y пули
+    public double getY() {//Считывание y пули
         return y;
     }
 
-    public int getR(){//Считывание r пули
+    public int getR() {//Считывание r пули
         return r;
     }
 
     public boolean remove() {//Очистка пули из списка, если она улетела за экран
-        if(y<0||x>GamePanel.WIDTH||x<0) {
+        if (y < 0 || x > GamePanel.WIDTH || x < 0) {
             return true;
         }
         return false;
     }
 
-    public  void  update(){
+    public void update() {
         y -= speed;
     }
 
-    public void draw(Graphics2D g){//Рисование пули в месте где находится игрок
+    public void draw(Graphics2D g) {//Рисование пули в месте где находится игрок
         g.setColor(color);
-        g.fillOval((int)x, (int)y, r, 2 * r);
+        g.fillOval((int) x, (int) y, r, 2 * r);
     }
 
 }
