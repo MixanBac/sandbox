@@ -1,7 +1,9 @@
 package ru.ssau.tk.mixanbac.sandbox.tack1_3;
 
+import ru.ssau.tk.mixanbac.sandbox.task1_4.Points;
+
 public final class Point {
-    private double x = 0, y = 0, z = 0, r = 0;
+    public double x = 0, y = 0, z = 0, r = 0;
 
     public Point(double x, double y, double z) {
         this.x = x;
@@ -45,5 +47,10 @@ class Task1_3 {
         System.out.println(onePoint);
         System.out.println(secondPoint);
         System.out.println(thirdPoint);
+
+        Point resPoint3 = Points.inverse(thirdPoint);
+        System.out.println(resPoint3.x);
+        System.out.println(resPoint3.y);
+        System.out.println(resPoint3.z);
     }
 }
