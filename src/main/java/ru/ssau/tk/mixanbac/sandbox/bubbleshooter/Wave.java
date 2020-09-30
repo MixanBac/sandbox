@@ -73,7 +73,7 @@ public class Wave {
         if (alpha > 255) alpha = 255;
         g.setFont(new Font("consolas", Font.PLAIN, 20));//Передаём шрифт
         g.setColor(new Color(255, 255, 255, (int) alpha));//Полная строка
-        String s = waveNumber + "ая " + waveText; //Полная строка
+        String s = "- " + waveNumber + "ая " + waveText + " -"; //Полная строка
         long length = (int) g.getFontMetrics().getStringBounds(s, g).getWidth();//Длина надписи в пиксилях
         g.drawString(s, GamePanel.WIDTH / 2 - (int) (length / 2), GamePanel.HEIGHT / 2);//Рисуем строчку в центре панели
 
