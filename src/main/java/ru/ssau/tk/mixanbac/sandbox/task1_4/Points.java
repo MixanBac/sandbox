@@ -36,6 +36,15 @@ public class Points {
     }
 
     public static Point inverse(Point obj) {
-        return new Point(1/obj.getX(), 1/obj.getY(), 1/obj.getZ());
+        return new Point(1 / obj.getX(), 1 / obj.getY(), 1 / obj.getZ());
     }
+
+    public static double scalarProduct(Point obj1, Point obj2) {
+        return obj1.getX() * obj2.getX() + obj1.getY() * obj2.getY() + obj1.getZ() * obj2.getZ();
+    }
+
+    public static Point vectorProduct(Point obj1, Point obj2) {
+        return new Point(obj1.getY() * obj2.getZ() - obj1.getZ() * obj2.getY(), obj1.getZ() * obj2.getX() - obj1.getX() * obj2.getZ(), obj1.getX() * obj2.getY() - obj1.getY() * obj2.getX());
+    }
+
 }
