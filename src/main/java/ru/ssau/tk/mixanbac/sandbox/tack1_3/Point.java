@@ -52,5 +52,10 @@ class Task1_3 {
         System.out.println(resPoint3.x);
         System.out.println(resPoint3.y);
         System.out.println(resPoint3.z);
+
+        double resPoint2 = Points.scalarProduct(secondPoint, onePoint);
+        System.out.println(resPoint2);
+        double resPoint1 = Points.scalarProduct(secondPoint, onePoint);
+        System.out.println(resPoint1);
     }
 }
