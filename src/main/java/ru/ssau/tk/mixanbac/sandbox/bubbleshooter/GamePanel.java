@@ -16,6 +16,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     private BufferedImage image;//Создает переменную холста
     private Graphics2D g;//Создает кисточку
 
+    private int FPS;
+    private double millisToFps;
+    private long timerFPS;
+    private int sleepTime;
+
     public static GameBack background;//Для взаимодействия с другими классами
     public static Player player;
     public static ArrayList<Bullet> bullets;//Создание списка пуль
@@ -42,6 +47,10 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
     public void run() {
 
+        FPS = 30;
+        millisToFps = 1000 / FPS;
+        sleepTime = 0;//Сколько будет спать
+
         image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);//Инициализация значений
         g = (Graphics2D) image.getGraphics();//Привязка кисточки к холсту
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);//Сглаживание
@@ -54,15 +63,24 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
         while (true) { //TODO States
 
+            timerFPS = System.nanoTime();
+
             gameUpdate();//С каждым проходом обновление
             gameRender();
             gameDraw();
 
+            timerFPS = (System.nanoTime() - timerFPS) / 1000000;//В наносекундах
+            if (millisToFps > timerFPS) {
+                sleepTime = (int) (millisToFps - timerFPS);
+            } else sleepTime = 1;
+
             try {
-                thread.sleep(33);//TODO FPS
+                thread.sleep(sleepTime);//Чтобы не зависело от цикла FPS
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            timerFPS = 0;
+            sleepTime = 1;
         }
     }
 
@@ -163,7 +181,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         }
 
         //Wave draw
-        if (wave.showWave()){
+        if (wave.showWave()) {
             wave.draw(g);//Вызов метода перерисовки для волны
         }
     }
