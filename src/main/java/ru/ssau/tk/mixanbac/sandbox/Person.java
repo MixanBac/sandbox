@@ -25,9 +25,6 @@ public class Person {
     }
 
     Person(){
-        firstName = "Mixan";
-        lastName = "Bac";
-        passportId = 734849;
     }
 
     Person(String firstName, String lastName){
