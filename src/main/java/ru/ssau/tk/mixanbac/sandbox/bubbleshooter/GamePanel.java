@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements Runnable {//Используем интерфэйс для создания потока
 
     //Field
-    public static int WIDTH = 400;
-    public static int HEIGHT = 400;
+    public static int WIDTH = 600;
+    public static int HEIGHT = 600;
 
     private Thread thread;//Создание потока
 
@@ -36,7 +36,8 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         requestFocus();//Позволяет установить фокус на нужном компоненте
 
         addKeyListener(new Listeners());//Привязка к панели слушателя
-
+        addMouseMotionListener(new Listeners());//Добавление слушателя мышь
+        addMouseListener(new Listeners());
     }
 
     //Functions
