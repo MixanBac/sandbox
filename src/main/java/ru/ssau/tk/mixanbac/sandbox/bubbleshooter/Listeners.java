@@ -1,9 +1,8 @@
 package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 
-public class Listeners implements KeyListener {//Для управления кнопками
+public class Listeners implements KeyListener, MouseListener, MouseMotionListener {//Для управления кнопками
 
     public void keyPressed(KeyEvent e) {//Определяет, была ли нажата клавиша на клавиатуре
         int key = e.getKeyCode();//Числовой код нажатой на клавиатуре клавишей
@@ -56,4 +55,41 @@ public class Listeners implements KeyListener {//Для управления к�
 
     }
 
+
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    public void mousePressed(MouseEvent e) {
+        if(e.getButton() == MouseEvent.BUTTON1){//Стрельба при нажатии 1 кнопки
+            GamePanel.player.isFiring = true;
+        }
+    }
+
+
+    public void mouseReleased(MouseEvent e) {
+        if(e.getButton() == MouseEvent.BUTTON1){//Отмена стрельба при отжатии 1 кнопки
+            GamePanel.player.isFiring = false;
+        }
+    }
+
+
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+
+    public void mouseExited(MouseEvent e) {
+
+    }
+
+
+    public void mouseDragged(MouseEvent e) {
+
+    }
+
+
+    public void mouseMoved(MouseEvent e) {
+
+    }
 }
