@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public static ArrayList<Bullet> bullets;//Создание списка пуль
     public static ArrayList<Enemy> enemies;//Создание списка врагов
     public static Wave wave;//Создание экземпляра класса Wave
+    public static Menu menu;//Создание экземпляра класса Menu
 
     // Constructor
     public GamePanel() {
@@ -67,13 +68,17 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         bullets = new ArrayList<Bullet>();
         enemies = new ArrayList<Enemy>();
         wave = new Wave();//Инициализация
+        menu = new Menu();
 
         while (true) { //TODO States
 
             timerFPS = System.nanoTime();
 
             if(state.equals(STATES.MENU)){//Если состояние меню
-
+                background.update();
+                background.draw(g);
+                menu.draw(g);
+                gameDraw();
             }
             if(state.equals(STATES.PLAY)){//Если состояние игра
                 gameUpdate();//С каждым проходом обновление
