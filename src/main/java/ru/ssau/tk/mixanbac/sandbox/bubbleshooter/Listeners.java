@@ -61,14 +61,14 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
     }
 
     public void mousePressed(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){//Стрельба при нажатии 1 кнопки
+        if (e.getButton() == MouseEvent.BUTTON1) {//Стрельба при нажатии 1 кнопки
             GamePanel.player.isFiring = true;
         }
     }
 
 
     public void mouseReleased(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){//Отмена стрельба при отжатии 1 кнопки
+        if (e.getButton() == MouseEvent.BUTTON1) {//Отмена стрельба при отжатии 1 кнопки
             GamePanel.player.isFiring = false;
         }
     }

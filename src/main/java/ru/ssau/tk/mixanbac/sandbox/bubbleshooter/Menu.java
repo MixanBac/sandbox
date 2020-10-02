@@ -13,7 +13,7 @@ public class Menu {
 
     //Constructor
 
-    public Menu(){
+    public Menu() {
         buttonWidth = 260;
         buttonHeight = 60;
         buttonColor = Color.white;
@@ -22,16 +22,16 @@ public class Menu {
 
     //Functions
 
-    public void draw(Graphics2D g){
+    public void draw(Graphics2D g) {
         g.setColor(buttonColor);//Передача кнопке цвета
         g.setStroke(new BasicStroke(3));//Толщина контура кнопки
-        g.drawRect(GamePanel.WIDTH/2 - buttonWidth/2,
-                GamePanel.HEIGHT/2 - buttonHeight/2, buttonWidth, buttonHeight);//Рисуем прямоугольник
+        g.drawRect(GamePanel.WIDTH / 2 - buttonWidth / 2,
+                GamePanel.HEIGHT / 2 - buttonHeight / 2, buttonWidth, buttonHeight);//Рисуем прямоугольник
         g.setStroke(new BasicStroke(1));//Вернем толщину линии в исходное значение после рисования кнопки
         g.setColor(buttonColor);//Цвет текста на кнопке
         g.setFont(new Font("Consoles", Font.BOLD, 40));//Шрифт кнопки
         long length = (int) g.getFontMetrics().getStringBounds(s, g).getWidth();//Длина строки в кнопке
-        g.drawString(s, (int) (GamePanel.WIDTH/2 - length/2),(int) (GamePanel.HEIGHT/2 + buttonHeight/4));
+        g.drawString(s, (int) (GamePanel.WIDTH / 2 - length / 2), (int) (GamePanel.HEIGHT / 2 + buttonHeight / 4));
 
     }
 }

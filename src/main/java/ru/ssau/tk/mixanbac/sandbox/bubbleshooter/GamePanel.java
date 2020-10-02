@@ -21,10 +21,11 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     private long timerFPS;
     private int sleepTime;
 
-    private enum STATES{//Задание категории
+    private enum STATES {//Задание категории
         MENU,
         PLAY
     }
+
     private STATES state = STATES.MENU;
 
     public static GameBack background;//Для взаимодействия с другими классами
@@ -74,13 +75,13 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
             timerFPS = System.nanoTime();
 
-            if(state.equals(STATES.MENU)){//Если состояние меню
+            if (state.equals(STATES.MENU)) {//Если состояние меню
                 background.update();
                 background.draw(g);
                 menu.draw(g);
                 gameDraw();
             }
-            if(state.equals(STATES.PLAY)){//Если состояние игра
+            if (state.equals(STATES.PLAY)) {//Если состояние игра
                 gameUpdate();//С каждым проходом обновление
                 gameRender();
                 gameDraw();
