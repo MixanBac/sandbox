@@ -13,6 +13,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
     public static int mouseX;
     public static int mouseY;
+    public static boolean leftMouse;
 
     private Thread thread;//Создание потока
 
@@ -67,6 +68,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         g = (Graphics2D) image.getGraphics();//Привязка кисточки к холсту
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);//Сглаживание
 
+        leftMouse = false;
         background = new GameBack();
         player = new Player();//Инициализация
         bullets = new ArrayList<Bullet>();

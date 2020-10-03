@@ -28,6 +28,9 @@ public class Menu {
                 GamePanel.mouseY > GamePanel.HEIGHT / 2 - buttonHeight / 2 &&
                 GamePanel.mouseY < GamePanel.HEIGHT / 2 + buttonHeight / 2) {//Если мышь попала в область кнопки
         transp = 60;
+        if(GamePanel.leftMouse){//Если нажали на кнопку мыши, тогда начнется игра
+            GamePanel.state = GamePanel.STATES.PLAY;
+        }
         } else {
             transp = 0;
         }
