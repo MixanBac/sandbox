@@ -84,12 +84,14 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
     }
 
 
-    public void mouseDragged(MouseEvent e) {
-
+    public void mouseDragged(MouseEvent e) {//Если тащим мышь
+        GamePanel.mouseX = e.getX();//Содержит координаты мыши
+        GamePanel.mouseY = e.getY();
     }
 
 
-    public void mouseMoved(MouseEvent e) {
-
+    public void mouseMoved(MouseEvent e) {//Если мышь двигалась
+        GamePanel.mouseX = e.getX();
+        GamePanel.mouseY = e.getY();
     }
 }
