@@ -24,12 +24,12 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     private long timerFPS;
     private int sleepTime;
 
-    private enum STATES {//Задание категории
+    public static enum STATES {//Задание категории
         MENU,
         PLAY
     }
 
-    private STATES state = STATES.MENU;
+    public static STATES state = STATES.MENU;
 
     public static GameBack background;//Для взаимодействия с другими классами
     public static Player player;
