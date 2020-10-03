@@ -11,6 +11,9 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public static int WIDTH = 600;
     public static int HEIGHT = 600;
 
+    public static int mouseX;
+    public static int mouseY;
+
     private Thread thread;//Создание потока
 
     private BufferedImage image;//Создает переменную холста
@@ -78,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             if (state.equals(STATES.MENU)) {//Если состояние меню
                 background.update();
                 background.draw(g);
+                menu.update();
                 menu.draw(g);
                 gameDraw();
             }
