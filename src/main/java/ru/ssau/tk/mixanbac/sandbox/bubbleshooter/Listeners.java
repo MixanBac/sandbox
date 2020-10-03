@@ -49,6 +49,9 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
         if (key == KeyEvent.VK_SPACE) {//Прекращение огня если кнопка SPACE не нажата
             Player.isFiring = false;
         }
+        if(key == KeyEvent.VK_ESCAPE){//Возврат из игры в меню
+            GamePanel.state = GamePanel.STATES.MENU;
+        }
     }
 
     public void keyTyped(KeyEvent e) {//Вызывается системой каждый раз, когда пользователь нажимает на клавиатуре клавиши символы Unicode
