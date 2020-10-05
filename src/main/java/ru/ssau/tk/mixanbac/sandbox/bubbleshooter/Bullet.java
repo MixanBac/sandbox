@@ -7,6 +7,12 @@ public class Bullet {
     //Fields
     private double x;
     private double y;
+    private double bulletDx;
+    private double bulletDy;
+
+    private double distX;
+    private double distY;
+    private double dist;
     private int r;
 
     private int speed;
@@ -19,8 +25,14 @@ public class Bullet {
         y = GamePanel.player.getY();
         r = 2;//Радиус пули
 
-        speed = 10;
+        speed = 1;
 
+        distX = GamePanel.mouseX - x;
+        distY = GamePanel.mouseY - y;
+        dist = Math.sqrt(distX * distX + distY * distY);
+
+        bulletDx = distX / dist * speed;
+        bulletDy = distY / dist * speed;
         color = Color.WHITE;
     }
 
@@ -39,14 +51,15 @@ public class Bullet {
     }
 
     public boolean remove() {//Очистка пули из списка, если она улетела за экран
-        if (y < 0 || x > GamePanel.WIDTH || x < 0) {
+        if (y < 0 && y > GamePanel.HEIGHT && x < 0 && x > GamePanel.WIDTH) {
             return true;
         }
         return false;
     }
 
     public void update() {
-        y -= speed;
+        y += distY;
+        x += distX;
     }
 
     public void draw(Graphics2D g) {//Рисование пули в месте где находится игрок
