@@ -7,12 +7,10 @@ public class Bullet {
     //Fields
     private double x;
     private double y;
-    private double bulletDx;
-    private double bulletDy;
 
     private double distX;
     private double distY;
-    private double dist;
+
     private int r;
 
     private int speed;
@@ -25,14 +23,11 @@ public class Bullet {
         y = GamePanel.player.getY();
         r = 2;//Радиус пули
 
-        speed = 1;
+        speed = 10;
 
         distX = GamePanel.mouseX - x;
         distY = GamePanel.mouseY - y;
-        dist = Math.sqrt(distX * distX + distY * distY);
 
-        bulletDx = distX / dist * speed;
-        bulletDy = distY / dist * speed;
         color = Color.WHITE;
     }
 
@@ -58,8 +53,8 @@ public class Bullet {
     }
 
     public void update() {
-        y += distY;
-        x += distX;
+        y = y - speed*distY/(Math.sqrt(distX * distX + distY * distY));
+        x = x - speed*distX/(Math.sqrt(distX * distX + distY * distY));
     }
 
     public void draw(Graphics2D g) {//Рисование пули в месте где находится игрок
