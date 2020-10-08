@@ -14,7 +14,7 @@ public class Player {
 
     private int speed;
 
-    private double health;
+    public double health;
 
     private Color color1;
     private Color color2;
@@ -67,7 +67,6 @@ public class Player {
 
     public void hit() {//Падение здоровья при столкновении
         health--;
-        System.out.println(health);
     }
 
     public void update() {//Обновление данных об игроке

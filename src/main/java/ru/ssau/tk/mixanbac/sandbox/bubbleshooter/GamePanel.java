@@ -1,6 +1,6 @@
 package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -189,6 +189,10 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                 if (remove) {
                     enemies.remove(i);//Удаление врага
                     i--;//Стереть врага из массива
+                }
+                if(player.health<=0){//Если здоровье упало до 0
+                    JOptionPane.showMessageDialog(null, "BOOM!!!BOOM!!!");
+                    System.exit(2);//Выход через 2 секунды
                 }
 
             }
