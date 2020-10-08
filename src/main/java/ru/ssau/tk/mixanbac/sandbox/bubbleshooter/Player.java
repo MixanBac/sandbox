@@ -97,6 +97,7 @@ public class Player {
 
         if (isFiring) {//Добавление пули при стрельбе
             GamePanel.bullets.add(new Bullet());
+            isFiring = false;//Запрет стрельбы
         }
 
     }

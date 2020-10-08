@@ -4,6 +4,8 @@ import java.awt.event.*;
 
 public class Listeners implements KeyListener, MouseListener, MouseMotionListener {//Для управления кнопками
 
+    private boolean isFiring_on;//Достать патрон
+
     public void keyPressed(KeyEvent e) {//Определяет, была ли нажата клавиша на клавиатуре
         int key = e.getKeyCode();//Числовой код нажатой на клавиатуре клавишей
 
@@ -23,9 +25,12 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
             Player.right = true;
         }
 
-        if (key == KeyEvent.VK_SPACE) {//Стрельба игрока на кнопку SPACE
-            Player.isFiring = true;
-        }
+        /*if (key == KeyEvent.VK_SPACE) {//Стрельба игрока на кнопку SPACE
+            if(isFiring_on = true) {//Если патрон в патроннике
+                Player.isFiring = true;//Стрельба разрешена
+                isFiring_on = false;//Нет патрона
+            }
+        }*/
     }
 
     public void keyReleased(KeyEvent e) {//Вызывается при отпускании любой клавиши на клавиатуре
@@ -46,9 +51,10 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
         if (key == KeyEvent.VK_D) {//Сравниваем с нажатием на кнопку D
             Player.right = false;
         }
-        if (key == KeyEvent.VK_SPACE) {//Прекращение огня если кнопка SPACE не нажата
+        /*if (key == KeyEvent.VK_SPACE) {//Прекращение огня если кнопка SPACE не нажата
             Player.isFiring = false;
-        }
+            isFiring_on = true;//Перезарядка
+        }*/
         if(key == KeyEvent.VK_ESCAPE){//Возврат из игры в меню
             GamePanel.state = GamePanel.STATES.MENU;
         }
