@@ -108,9 +108,9 @@ public class Player {
         g.fillRect(0, 0, GamePanel.WIDTH, 20);//Рисование прямоугольной области
 
         g.setColor(Color.WHITE);//Задание цвета объекту Соlor
-        Font font = new Font("Arial",Font.ITALIC,20);//Создание объекта класса Font (передаем в конструктор параметры)
+        Font font = new Font("Arial", Font.ITALIC, 20);//Создание объекта класса Font (передаем в конструктор параметры)
         g.setFont(font);//Установка шрифта
-        ((Graphics2D) g).drawString("Жизни - "+(int)health,50,15 );//Рисование строки
+        ((Graphics2D) g).drawString("Жизни - " + (int) health, 50, 15);//Рисование строки
 
         g.setColor(color1);//Рисование 1 цветом
         g.fillOval((int) (x - r), (int) (y - r), 2 * r, 2 * r);//Смещение потому, что java рисует от верхнего левого угла
