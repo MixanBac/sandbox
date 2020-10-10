@@ -71,6 +71,7 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
 
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {//Стрельба при нажатии 1 кнопки
+            if(GamePanel.state.equals(GamePanel.STATES.PLAY))
             GamePanel.player.isFiring = true;
             GamePanel.leftMouse = true;
         }
