@@ -188,7 +188,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             double dy = ey - py;//Разница
             double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и игроком
             if ((int) dist <= e.getR() + player.getR()) {
-                e.hit();
+                e.destroy();
                 player.hit();
                 boolean remove = e.remove();
                 if (remove) {

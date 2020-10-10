@@ -70,6 +70,10 @@ public class Enemy {
         health--;
     }
 
+    public void destroy() {//При попадении во врага-потеря жизни
+        health = 0;
+    }
+
     public void update() {
         x += dx;
         y += dy;
