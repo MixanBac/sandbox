@@ -24,7 +24,7 @@ public class Player {
     public static boolean left;
     public static boolean right;
 
-    public int magazine;//Патроны
+    //public int magazine;//Патроны
 
     public static boolean isFiring;//Стрельба
 
@@ -51,7 +51,7 @@ public class Player {
 
         isFiring = false;
 
-        magazine = 1000;
+        //magazine = 1000;
 
     }
 
@@ -98,15 +98,15 @@ public class Player {
         dy = 0;//Для остановки, если клавиши не нажаты
         dx = 0;
 
-        if (magazine <= 0) {
-            magazine = 0;
+        if (GamePanel.wave.magazine <= 0) {
+            GamePanel.wave.magazine = 0;
             isFiring = false;//Запрет стрельбы
         }
 
         if (isFiring) {//Добавление пули при стрельбе
             GamePanel.bullets.add(new Bullet());
             isFiring = false;//Запрет стрельбы
-            magazine--;
+            GamePanel.wave.magazine--;
         }
 
     }
@@ -121,7 +121,7 @@ public class Player {
         Font font = new Font("Arial", Font.ITALIC, 20);//Создание объекта класса Font (передаем в конструктор параметры)
         g.setFont(font);//Установка шрифта
         ((Graphics2D) g).drawString("Жизни - " + (int) health, 50, 15);//Рисование строки
-        ((Graphics2D) g).drawString("Патроны " + magazine, 250, 15);//Рисование строки
+        ((Graphics2D) g).drawString("Патроны " + GamePanel.wave.magazine, 250, 15);//Рисование строки
 
         g.setColor(color1);//Рисование 1 цветом
         g.fillOval((int) (x - r), (int) (y - r), 2 * r, 2 * r);//Смещение потому, что java рисует от верхнего левого угла
