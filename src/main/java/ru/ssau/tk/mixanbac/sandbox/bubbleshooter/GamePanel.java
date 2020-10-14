@@ -9,9 +9,8 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
 
     //Field
 
-
-    public static int WIDTH = 600;
-    public static int HEIGHT = 600;
+    public static int WIDTH = 1280;
+    public static int HEIGHT = 720;
 
     public static int mouseX;
     public static int mouseY;

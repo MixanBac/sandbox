@@ -113,15 +113,18 @@ public class Player {
 
     public void draw(Graphics2D g) {//Для рисования
 
-        Color newColor = new Color(0, 200, 250);//Создание объекта класса цвет
-        g.setColor(newColor);// Передача цвета графическому объекту
-        g.fillRect(0, 0, GamePanel.WIDTH, 20);//Рисование прямоугольной области
+        Color bacColor = new Color(255, 45, 255);//Создание объекта класса цвет
+        g.setColor(bacColor);// Передача цвета графическому объекту
+        g.fillRect(45, 0, 110, 20);//Рисование прямоугольной области
+        g.fillRect(245, 0, 170, 20);//Рисование прямоугольной области
+        g.fillRect(495, 0, 95, 20);//Рисование прямоугольной области
 
         g.setColor(Color.WHITE);//Задание цвета объекту Соlor
         Font font = new Font("Arial", Font.ITALIC, 20);//Создание объекта класса Font (передаем в конструктор параметры)
         g.setFont(font);//Установка шрифта
         ((Graphics2D) g).drawString("Жизни - " + (int) health, 50, 15);//Рисование строки
         ((Graphics2D) g).drawString("Патроны " + GamePanel.wave.magazine, 250, 15);//Рисование строки
+        ((Graphics2D) g).drawString("Враги " + GamePanel.enemies.size(), 500, 15);//Рисование строки
 
         g.setColor(color1);//Рисование 1 цветом
         g.fillOval((int) (x - r), (int) (y - r), 2 * r, 2 * r);//Смещение потому, что java рисует от верхнего левого угла

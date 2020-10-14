@@ -25,7 +25,7 @@ public class Wave {
 
     //Создание врагов
     public void createEnemies() {
-        int enemyCount = waveNumber * waveMultiplier;//Количество врагов
+        int enemyCount = 2 * waveNumber * waveMultiplier;//Количество врагов
         if (waveNumber < 100) {
             while (enemyCount > 0) {//Пока
                 int type = 1;//
@@ -35,7 +35,7 @@ public class Wave {
             }
         }
         waveNumber++;//Изменение номера волны
-        magazine = 10*waveNumber;//Количество патронов
+        magazine = 10 * waveNumber;//Количество патронов
     }
 
     public void update() {
