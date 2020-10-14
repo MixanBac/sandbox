@@ -36,7 +36,7 @@ public class Enemy {
                         r = 7;
 
                         speed = 2;
-                        health = 2;
+                        health = 1;
 
                         double angle = Math.toRadians(Math.random() * 360);//Враги могут двигаться в любую сторону
                         dx = Math.sin(angle) * speed;

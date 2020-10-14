@@ -8,6 +8,8 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements Runnable {//Используем интерфэйс для создания потока
 
     //Field
+
+
     public static int WIDTH = 600;
     public static int HEIGHT = 600;
 
