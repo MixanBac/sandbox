@@ -2,6 +2,7 @@ package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class Player {
 
@@ -18,6 +19,11 @@ public class Player {
     private int speed;
 
     public double health;
+
+    private double ang1;//Поворот угла
+    private double distX;//Разница по x от мыши
+    private double distY;//Разница по y от мыши
+    private double dist;//Расстояние от мышки
 
     private Color color1;
     private Color color2;
@@ -77,6 +83,14 @@ public class Player {
     }
 
     public void update() {//Обновление данных об игроке
+
+        distX = GamePanel.mouseX - x;//Разница x от мышки
+        distY = y - GamePanel.mouseY;
+        dist = (Math.sqrt(distX * distX + distY * distY));
+
+        if (distX > 0) ang1 = Math.acos(distY / (Math.sqrt(distX * distX + distY * distY)));//Вычисление угла в 1 и 4 координатной плоскости
+        if (distX < 0) ang1 = -Math.acos(distY / (Math.sqrt(distX * distX + distY * distY)));//
+
         if (up && y > r) {
             dy = -speed;
         }
@@ -116,7 +130,15 @@ public class Player {
 
     public void draw(Graphics2D g) {//Для рисования
 
-        g.drawImage(img, (int) x - 26, (int) y, null);//Отрисовка игрока в координатах
+        //g.drawImage(img, (int) x - 26, (int) y, null);//Отрисовка игрока в координатах
+
+        AffineTransform origXform;//Создание объекта класса AffineTransform
+        origXform = g.getTransform();//Получение текущего значения
+        AffineTransform copyXform = (AffineTransform) (origXform.clone());//Создание копии объекта
+        copyXform.rotate(ang1, x + 27, y + 38);//Кручение изображения
+        g.setTransform(copyXform);//Подставляем трансформированное изображение
+        g.drawImage(img, (int) x, (int) y, null);//Рисуем картинку
+        g.setTransform(origXform);//Возвращение старого значения
 
         Color bacColor = new Color(255, 45, 255);//Создание объекта класса цвет
         g.setColor(bacColor);// Передача цвета графическому объекту
