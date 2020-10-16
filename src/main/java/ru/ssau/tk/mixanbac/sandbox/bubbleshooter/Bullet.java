@@ -1,9 +1,11 @@
 package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Bullet {
 
+    Image img = new ImageIcon("res/Rocket_photo-resizer.ru.png").getImage();//Загрузка картинки
     //Fields
     private double x;
     private double y;
@@ -58,8 +60,9 @@ public class Bullet {
     }
 
     public void draw(Graphics2D g) {//Рисование пули в месте где находится игрок
-        g.setColor(color);
-        g.fillOval((int) x, (int) y, r, 2 * r);
+        g.drawImage(img, (int) x, (int) y, null);//Отрисовка игрока в координатах
+        /*g.setColor(color);
+        g.fillOval((int) x, (int) y, r, 2 * r);*/
     }
 
 }
