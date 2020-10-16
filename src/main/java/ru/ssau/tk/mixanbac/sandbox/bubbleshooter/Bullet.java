@@ -2,6 +2,7 @@ package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class Bullet {
 
@@ -12,6 +13,7 @@ public class Bullet {
 
     private double distX;
     private double distY;
+    private double dist;
 
     private int r;
 
@@ -21,14 +23,15 @@ public class Bullet {
 
     //Constructor
     public Bullet() {
-        x = GamePanel.player.getX();//Задание X в конструкторе для мгновенного считывания и рисования пуль
-        y = GamePanel.player.getY();
+        x = 27+GamePanel.player.getX();//Задание X в конструкторе для мгновенного считывания и рисования пуль
+        y = 38+GamePanel.player.getY();
         r = 2;//Радиус пули
 
         speed = 10;
 
-        distX = x - GamePanel.mouseX;
+        distX = GamePanel.mouseX - x;
         distY = y - GamePanel.mouseY;
+        dist = (Math.sqrt(distX*distX+distY*distY));
 
         color = Color.WHITE;
     }
@@ -55,12 +58,21 @@ public class Bullet {
     }
 
     public void update() {
-        y = y - speed * distY / (Math.sqrt(distX * distX + distY * distY));
-        x = x - speed * distX / (Math.sqrt(distX * distX + distY * distY));
+        y = y - speed * distY / dist;
+        x = x + speed * distX / dist;
     }
 
     public void draw(Graphics2D g) {//Рисование пули в месте где находится игрок
-        g.drawImage(img, (int) x, (int) y, null);//Отрисовка игрока в координатах
+        //g.drawImage(img, (int) x, (int) y, null);//Отрисовка игрока в координатах
+        AffineTransform origXform;
+        origXform = g.getTransform();// получаем текущее значение
+        AffineTransform newXform = (AffineTransform)(origXform.clone()); // клонируем текущее значение
+        if (distX>0) newXform.rotate(Math.acos(distY/(Math.sqrt(distX*distX + distY*distY))),x,y) ; // вертим полученное
+        if (distX<0) newXform.rotate(-Math.acos(distY/(Math.sqrt(distX*distX + distY*distY))),x,y) ; // вертим полученное
+        g.setTransform(newXform); // ставим
+        g.drawImage(img,(int)x,(int)y,null); // здесь рисуем картинку
+        g.setTransform(origXform); // возвращаем старое значение
+
         /*g.setColor(color);
         g.fillOval((int) x, (int) y, r, 2 * r);*/
     }
