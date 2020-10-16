@@ -35,7 +35,7 @@ public class Wave {
             }
         }
         waveNumber++;//Изменение номера волны
-        magazine = 10 * waveNumber;//Количество патронов
+        magazine = 20 * waveNumber;//Количество патронов
     }
 
     public void update() {

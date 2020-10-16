@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class Enemy {
 
-    Image img = new ImageIcon("res/Enemy_photo-resizer.ru.png").getImage();//Загрузка картинки
+    Image img = new ImageIcon("res/Enemyp.png").getImage();//Загрузка картинки
 
     //Fields
     private double x;
@@ -36,9 +36,9 @@ public class Enemy {
                         x = Math.random() * GamePanel.WIDTH;
                         y = 0;
 
-                        r = 22;
+                        r = 25;
 
-                        speed = 2;
+                        speed = 3;
                         health = 1;
 
                         double angle = Math.toRadians(Math.random() * 360);//Враги могут двигаться в любую сторону

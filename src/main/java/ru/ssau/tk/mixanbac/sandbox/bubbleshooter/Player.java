@@ -1,8 +1,11 @@
 package ru.ssau.tk.mixanbac.sandbox.bubbleshooter;
 
+import javax.swing.*;
 import java.awt.*;
 
 public class Player {
+
+    Image img = new ImageIcon("res/Player.png").getImage();//Загрузка картинки
 
     //Fields
     private double x;
@@ -113,6 +116,8 @@ public class Player {
 
     public void draw(Graphics2D g) {//Для рисования
 
+        g.drawImage(img, (int) x - 26, (int) y, null);//Отрисовка игрока в координатах
+
         Color bacColor = new Color(255, 45, 255);//Создание объекта класса цвет
         g.setColor(bacColor);// Передача цвета графическому объекту
         g.fillRect(45, 0, 110, 20);//Рисование прямоугольной области
@@ -126,11 +131,11 @@ public class Player {
         ((Graphics2D) g).drawString("Патроны " + GamePanel.wave.magazine, 250, 15);//Рисование строки
         ((Graphics2D) g).drawString("Враги " + GamePanel.enemies.size(), 500, 15);//Рисование строки
 
-        g.setColor(color1);//Рисование 1 цветом
+        /*g.setColor(color1);//Рисование 1 цветом
         g.fillOval((int) (x - r), (int) (y - r), 2 * r, 2 * r);//Смещение потому, что java рисует от верхнего левого угла
         g.setStroke(new BasicStroke(3));//Увеличение толщины линии
         g.setColor(color1.darker());//Цвет потемнее
         g.drawOval((int) (x - r), (int) (y - r), 2 * r, 2 * r);
-        g.setStroke(new BasicStroke(1));
+        g.setStroke(new BasicStroke(1));*/
     }
 }
