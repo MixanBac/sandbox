@@ -10,7 +10,10 @@ public class Enemy {
     //Fields
     private double x;
     private double y;
-    private int r;
+    //private int r;
+
+    private double w;//Ширина объекта
+    private double l;//Длина объекта
 
     private double speed;
     private double dx;
@@ -36,7 +39,8 @@ public class Enemy {
                         x = Math.random() * GamePanel.WIDTH;
                         y = 0;
 
-                        r = 25;
+                        w = 50;
+                        l = 72;
 
                         speed = 3;
                         health = 1;
@@ -58,8 +62,16 @@ public class Enemy {
         return y;
     }
 
-    public int getR() {//Считывание r врага
+    /*public int getR() {//Считывание r врага
         return r;
+    }*/
+
+    public double getW() {//Считывание y
+        return w;
+    }
+
+    public double getL() {//Считывание y
+        return l;
     }
 
     public boolean remove() {//Уничтожение врага

@@ -153,11 +153,17 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             Enemy e = enemies.get(i);//Индекс врага
             double ex = e.getX();//Координата x врага
             double ey = e.getY();//Координата y врага
+            double ew = e.getW();//Координата x врага
+            double el = e.getL();//Координата y врага
+
             for (int j = 0; j < bullets.size(); j++) {
                 Bullet b = bullets.get(j);
                 double bx = b.getX();//Считывание координаты пули
                 double by = b.getY();//Считывание координаты пули
-                double dx = ex - bx;//Разница
+                double bw = b.getW();//Считывание координаты пули
+                double bl = b.getL();//Считывание координаты пули
+
+                /*double dx = ex - bx;//Разница
                 double dy = ey - by;//Разница
                 double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и пулей
                 if ((int) dist <= e.getR() + b.getR()) {
@@ -171,6 +177,18 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                         break;
                     }
 
+                }*/
+
+                if ((bx > ex - bw) && (bx < ex + ew) && (by > ey - bl) && (by < ey + el)) {
+                    e.hit();
+                    bullets.remove(j);//Удаление пули при попадении
+                    j--;//Удаление индекса пули из массива
+                    boolean remove = e.remove();
+                    if (remove) {
+                        enemies.remove(i);//Удаление врага
+                        i--;//Стереть врага из массива
+                        break;
+                    }
                 }
 
             }
@@ -182,13 +200,27 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             Enemy e = enemies.get(i);//Индекс врага
             double ex = e.getX();//Координата x врага
             double ey = e.getY();//Координата y врага
+            double ew = e.getW();//Координата x врага
+            double el = e.getL();//Координата y врага
 
             double px = player.getX();//Координата x игрока
             double py = player.getY();//Координата y игрока
-            double dx = ex - px;//Разница
-            double dy = ey - py;//Разница
-            double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и игроком
+            double pw = player.getW();//Координата x игрока
+            double pl = player.getL();//Координата y игрока
+
+            /*double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и игроком
             if ((int) dist <= e.getR() + player.getR()) {
+                e.destroy();
+                player.hit();
+                boolean remove = e.remove();
+                if (remove) {
+                    enemies.remove(i);//Удаление врага
+                    i--;//Стереть врага из массива
+                }
+
+            }*/
+
+            if ((px > ex - pw) && (px < ex + ew) && (py > ey - pl) && (py < ey + el)) {
                 e.destroy();
                 player.hit();
                 boolean remove = e.remove();

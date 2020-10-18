@@ -11,6 +11,9 @@ public class Bullet {
     private double x;
     private double y;
 
+    private double w;//Ширина объекта
+    private double l;//Длина объекта
+
     private double distX;
     private double distY;
     private double dist;
@@ -26,6 +29,9 @@ public class Bullet {
         x = 27+GamePanel.player.getX();//Задание X в конструкторе для мгновенного считывания и рисования пуль
         y = 38+GamePanel.player.getY();
         r = 2;//Радиус пули
+
+        w = 8;
+        l = 23;
 
         speed = 10;
 
@@ -46,8 +52,16 @@ public class Bullet {
         return y;
     }
 
-    public int getR() {//Считывание r пули
+    /*public int getR() {//Считывание r пули
         return r;
+    }*/
+
+    public double getW() {//Считывание y
+        return w;
+    }
+
+    public double getL() {//Считывание y
+        return l;
     }
 
     public boolean remove() {//Очистка пули из списка, если она улетела за экран

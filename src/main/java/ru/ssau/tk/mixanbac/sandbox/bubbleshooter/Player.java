@@ -11,7 +11,9 @@ public class Player {
     //Fields
     private double x;
     private double y;
-    private int r;
+    //private int r;
+    private double w;//Ширина объекта
+    private double l;//Длина объекта
 
     private double dx;//Коэффициэнты смещения
     private double dy;
@@ -42,7 +44,10 @@ public class Player {
         x = GamePanel.WIDTH / 2;//Начальная позиция игрока
         y = GamePanel.HEIGHT / 2;
 
-        r = 5;
+        //r = 5;
+
+        w = 54;
+        l = 77;
 
         speed = 5;
 
@@ -74,8 +79,16 @@ public class Player {
         return y;
     }
 
-    public int getR() {//Считывание r
+    /*public int getR() {//Считывание r
         return r;
+    }*/
+
+    public double getW() {//Считывание y
+        return w;
+    }
+
+    public double getL() {//Считывание y
+        return l;
     }
 
     public void hit() {//Падение здоровья при столкновении
@@ -91,7 +104,7 @@ public class Player {
         if (distX > 0) ang1 = Math.acos(distY / (Math.sqrt(distX * distX + distY * distY)));//Вычисление угла в 1 и 4 координатной плоскости
         if (distX < 0) ang1 = -Math.acos(distY / (Math.sqrt(distX * distX + distY * distY)));//
 
-        if (up && y > r) {
+        /*if (up && y > r) {
             dy = -speed;
         }
         if (down && y < GamePanel.HEIGHT - r) {
@@ -102,7 +115,24 @@ public class Player {
         }
         if (right && x < GamePanel.WIDTH - r) {
             dx = speed;
+        }*/
+
+        if(up && y>20){
+            y -=speed;
         }
+
+        if(down && y<GamePanel.HEIGHT - l){
+            y +=speed;
+        }
+
+        if(left && x>0){
+            x -=speed;
+        }
+
+        if(right && y<GamePanel.WIDTH - w){
+            x +=speed;
+        }
+
         if (up && left || up && right || down && left || down && right) {//Чтобы не перемещался быстрее по диагонали
             double angle = Math.toRadians(45);//Перевод градусов в радианы
             dy = dy * Math.sin(angle);
