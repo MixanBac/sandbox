@@ -78,15 +78,17 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         wave = new Wave();//Инициализация
         menu = new Menu();
 
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        BufferedImage buffered = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);//Создание маленького "мольбертика" для рисования
+        Toolkit kit = Toolkit.getDefaultToolkit();//Курсор
+        Cursor myCursor = kit.getDefaultToolkit().createCustomCursor(kit.getDefaultToolkit().getImage(""),
+                new Point(0, 0), "myCursor");//Пустой курсор
+        /*BufferedImage buffered = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);//Создание маленького "мольбертика" для рисования//Курсор
         Graphics2D g3 = (Graphics2D) buffered.getGraphics();
         g3.setColor(new Color(255, 255, 255));//Цвет мишени
         g3.drawOval(0, 0, 4, 4);//Окружение миншени
         g3.drawLine(2, 0, 2, 4);
         g3.drawLine(0, 2, 4, 2);
         Cursor myCursor = kit.createCustomCursor(buffered, new Point(3, 3), "myCursor");
-        g3.dispose();
+        g3.dispose();*/
 
         while (true) { //TODO States
 
@@ -102,6 +104,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                 gameDraw();
             }
             if (state.equals(STATES.PLAY)) {//Если состояние игра
+                this.setCursor(myCursor);//Активирование невидимого курсора
                 gameUpdate();//С каждым проходом обновление
                 gameRender();
                 gameDraw();
