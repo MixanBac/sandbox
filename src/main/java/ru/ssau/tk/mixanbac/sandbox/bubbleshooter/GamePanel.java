@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class GamePanel extends JPanel implements Runnable {//Используем интерфэйс для создания потока
 
@@ -196,7 +197,20 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         }
 
         //Player-enemy collides
-        for (int i = 0; i < enemies.size(); i++) {
+        Iterator<Enemy> i = enemies.iterator();//Итератор по списку врагов
+
+        while (i.hasNext()){//Пока есть элемент в списке, выделяем элемент из этого списка
+            Enemy e = i.next();
+            if(player.getRect().intersects(e.getRect())){
+                e.destroy();
+                player.hit();
+                boolean remove = e.remove();
+                if (remove) {
+                    enemies.remove(e);//Удаление врага
+                    break;
+            }
+        }
+        /*for (int i = 0; i < enemies.size(); i++) {//При помощи координат
             Enemy e = enemies.get(i);//Индекс врага
             double ex = e.getX();//Координата x врага
             double ey = e.getY();//Координата y врага
@@ -208,7 +222,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
             double pw = player.getW();//Координата x игрока
             double pl = player.getL();//Координата y игрока
 
-            /*double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и игроком
+            double dist = Math.sqrt(dx * dx + dy * dy);//Расстояние между врагом и игроком
             if ((int) dist <= e.getR() + player.getR()) {
                 e.destroy();
                 player.hit();
@@ -218,7 +232,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                     i--;//Стереть врага из массива
                 }
 
-            }*/
+            }
 
             if ((px > ex - pw) && (px < ex + ew) && (py > ey - pl) && (py < ey + el)) {
                 e.destroy();
@@ -229,7 +243,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
                     i--;//Стереть врага из массива
                 }
 
-            }
+            }*/
 
         }
 

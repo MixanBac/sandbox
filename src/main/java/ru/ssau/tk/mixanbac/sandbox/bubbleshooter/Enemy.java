@@ -26,6 +26,10 @@ public class Enemy {
 
     private Color color;
 
+    public Rectangle getRect(){//Получение прямоугольника
+        return new Rectangle((int) x,(int) y, 50, 72);
+    }
+
     //Constructor
     public Enemy(int type, int rank) {
         this.type = type;

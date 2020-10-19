@@ -39,6 +39,10 @@ public class Player {
 
     public static boolean isFiring;//Стрельба
 
+    public Rectangle getRect(){//Получение прямоугольника
+        return new Rectangle((int) x,(int) y, 54, 77);
+    }
+
     //Constructor
     public Player() {//Инициализация игрока
         x = GamePanel.WIDTH / 2;//Начальная позиция игрока
