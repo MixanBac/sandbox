@@ -40,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public static ArrayList<Enemy> enemies;//Создание списка врагов
     public static Wave wave;//Создание экземпляра класса Wave
     public static Menu menu;//Создание экземпляра класса Menu
+    public static Aim aim1;
 
     // Constructor
     public GamePanel() {
