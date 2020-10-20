@@ -79,6 +79,8 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         wave = new Wave();//Инициализация
         menu = new Menu();
 
+        aim1 = new Aim(GamePanel.mouseX, GamePanel.mouseY, 72, 76, "res/aim1.png", 0, 0);
+
         Toolkit kit = Toolkit.getDefaultToolkit();//Курсор
         Cursor myCursor = kit.getDefaultToolkit().createCustomCursor(kit.getDefaultToolkit().getImage(""),
                 new Point(0, 0), "myCursor");//Пустой курсор
@@ -129,6 +131,9 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public void gameUpdate() {//Обновление данных и списков данных
         //Background update
         background.update();
+
+        //Aim update
+        aim1.update();
 
         //Player update
         player.update();//Обновление данных об игроке
@@ -203,17 +208,17 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
         //Player-enemy collides
         Iterator<Enemy> i = enemies.iterator();//Итератор по списку врагов
 
-        while (i.hasNext()){//Пока есть элемент в списке, выделяем элемент из этого списка
+        while (i.hasNext()) {//Пока есть элемент в списке, выделяем элемент из этого списка
             Enemy e = i.next();
-            if(player.getRect().intersects(e.getRect())){
+            if (player.getRect().intersects(e.getRect())) {
                 e.destroy();
                 player.hit();
                 boolean remove = e.remove();
                 if (remove) {
                     enemies.remove(e);//Удаление врага
                     break;
+                }
             }
-        }
         /*for (int i = 0; i < enemies.size(); i++) {//При помощи координат
             Enemy e = enemies.get(i);//Индекс врага
             double ex = e.getX();//Координата x врага
@@ -259,6 +264,9 @@ public class GamePanel extends JPanel implements Runnable {//Используе�
     public void gameRender() {//Обновление графических компонентов игры
         //Background draw
         background.draw(g);//Передача кисточки в GamePanel
+
+        //Aim draw
+        aim1.draw(g);
 
         //Player draw
         player.draw(g);//Рисование игрока
