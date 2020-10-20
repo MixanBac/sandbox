@@ -35,8 +35,8 @@ public class Bullet {
 
         speed = 10;
 
-        distX = GamePanel.mouseX - x;
-        distY = y - GamePanel.mouseY;
+        distX = GamePanel.aim.getX() - x;//Разница по х от прицела до пули
+        distY = y - GamePanel.aim.getY();//Разница по y от прицела до пули
         dist = (Math.sqrt(distX*distX+distY*distY));
 
         color = Color.WHITE;
