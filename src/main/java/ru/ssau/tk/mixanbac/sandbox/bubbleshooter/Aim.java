@@ -48,26 +48,27 @@ public class Aim {//Прицел
 
     public void update() {
         if(Listeners.is_nip){
-            for (int k = 0; k < GamePanel.enemies.size(); k++) {// каждого из списка
-                Enemy e = GamePanel.enemies.get(k); // выделяем элемент списка
-                double ex = e.getX();// получаем коорд элемента
+            for (int k = 0; k < GamePanel.enemies.size(); k++) {//Каждого из списка
+                Enemy e = GamePanel.enemies.get(k); //Выделение элемента списка
+                double ex = e.getX();//Получение координат элемента
                 double ey = e.getY();
                 double ew = e.getW();
                 double eh = e.getL();
-                // отслеживаем центральный прицел
-                double ax = GamePanel.aim.getX();// получаем коорд элемента центрального прицела
+                //Отслеживание центрального прицела
+                double ax = GamePanel.aim.getX();//Получение координат элемента центрального прицела
                 double ay = GamePanel.aim.getY();
                 double aw = GamePanel.aim.getW();
                 double ah = GamePanel.aim.getL();
                 if ((ax > ex - aw) && (ax < ex + ew) && (ay > ey - ah) && (ay < ey + eh)) {
-                    this.x = ex;// всем прицелам присваиваем координаты врага
+                    this.x = ex;//Присваивание всем прицелам координат врага
                     this.y = ey;
-                    GamePanel.aim.x = ex+ew/2; //переопределяем положения центрального маркера
+                    GamePanel.aim.x = ex+ew/2; //Переопределение положения центрального маркера
                     GamePanel.aim.y = ey+eh/2;
                 }
 
             }
-
+            dist = (Math.sqrt((GamePanel.player.getX()-GamePanel.aim.x)*(GamePanel.player.getX()-GamePanel.aim.x)
+                    +(GamePanel.aim.y-GamePanel.player.getY())*(GamePanel.aim.y-GamePanel.player.getY())));//Подсчет расстояния до цели
         }
         else {
             this.x = GamePanel.mouseX + dx;
@@ -80,13 +81,13 @@ public class Aim {//Прицел
         else GamePanel.aim1.img = "res/aim1.png";
 
         Image im = new ImageIcon(img).getImage();
-        g.drawImage(im,(int)this.x,(int)this.y,null);//отрисовываем элемент в координатах
+        g.drawImage(im,(int)this.x,(int)this.y,null);//Отрисовка элемента в координатах
 
-        g.setColor(Color.WHITE);//задаем цвет объекту Соlor
-        Font font = new Font("Arial",Font.ITALIC,10);//Создём объект класса фонт (передаем в конструктор параметры)
-        g.setFont(font);//устанвливаем наш шрифт
+        g.setColor(Color.WHITE);//Задание цвет объекту Соlor
+        Font font = new Font("Arial",Font.ITALIC,10);//Создаём объект класса Font (передаем в конструктор параметры)
+        g.setFont(font);//Устанвливаем наш шрифт
         if(Listeners.is_nip)
-            ((Graphics2D) g).drawString("дистанция"+(int)dist,(int)GamePanel.aim.x -25,(int)GamePanel.aim.y - 40 );//отрисовываем строку
+            ((Graphics2D) g).drawString("дистанция"+(int)dist,(int)GamePanel.aim.x -25,(int)GamePanel.aim.y - 40 );//Отрисовывка строк
     }
 
 }
