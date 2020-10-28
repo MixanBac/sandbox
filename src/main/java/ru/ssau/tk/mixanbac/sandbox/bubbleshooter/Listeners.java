@@ -6,6 +6,8 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
 
     private boolean isFiring_on;//Достать патрон
 
+    public static boolean is_nip;//Захват
+
     public void keyPressed(KeyEvent e) {//Определяет, была ли нажата клавиша на клавиатуре
         int key = e.getKeyCode();//Числовой код нажатой на клавиатуре клавишей
 
@@ -25,12 +27,14 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
             Player.right = true;
         }
 
-        /*if (key == KeyEvent.VK_SPACE) {//Стрельба игрока на кнопку SPACE
-            if(isFiring_on = true) {//Если патрон в патроннике
-                Player.isFiring = true;//Стрельба разрешена
-                isFiring_on = false;//Нет патрона
-            }
-        }*/
+        if (key == KeyEvent.VK_SPACE) {
+            if (isFiring_on)// если патрон в патроннике
+                Player.isFiring = true; //стрельба разрешена
+            isFiring_on = false;  // нет патрона
+        }
+        if (key == KeyEvent.VK_ESCAPE) {
+            GamePanel.state = GamePanel.STATES.MENU;
+        }
     }
 
     public void keyReleased(KeyEvent e) {//Вызывается при отпускании любой клавиши на клавиатуре
@@ -51,13 +55,11 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
         if (key == KeyEvent.VK_D) {//Сравниваем с нажатием на кнопку D
             Player.right = false;
         }
-        /*if (key == KeyEvent.VK_SPACE) {//Прекращение огня если кнопка SPACE не нажата
+        if (key == KeyEvent.VK_SPACE) {
             Player.isFiring = false;
-            isFiring_on = true;//Перезарядка
-        }*/
-        if(key == KeyEvent.VK_ESCAPE){//Возврат из игры в меню
-            GamePanel.state = GamePanel.STATES.MENU;
+            isFiring_on = true; // Патрон в обойме
         }
+
     }
 
     public void keyTyped(KeyEvent e) {//Вызывается системой каждый раз, когда пользователь нажимает на клавиатуре клавиши символы Unicode
@@ -70,18 +72,28 @@ public class Listeners implements KeyListener, MouseListener, MouseMotionListene
     }
 
     public void mousePressed(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1) {//Стрельба при нажатии 1 кнопки
-            if(GamePanel.state.equals(GamePanel.STATES.PLAY))
-            GamePanel.player.isFiring = true;
-            GamePanel.leftMouse = true;
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            if (GamePanel.state == GamePanel.STATES.MENU) {
+                GamePanel.leftMouse = true;
+            }
+            if (GamePanel.state == GamePanel.STATES.PLAY) {
+                Player.isFiring = true;
+            }
+        }
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            is_nip= true;
         }
     }
 
 
     public void mouseReleased(MouseEvent e) {
-        if (e.getButton() == MouseEvent.BUTTON1) {//Отмена стрельба при отжатии 1 кнопки
+        if (e.getButton() == MouseEvent.BUTTON1) {
             GamePanel.player.isFiring = false;
+            //isFiring_on = true;
             GamePanel.leftMouse = false;
+        }
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            is_nip= false;
         }
     }
 
